@@ -29,18 +29,24 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Basado en Launches
+- Cada launch se podrá filtrar por:
+    - Fue exitoso o no
+    - Año y fecha de lanzamiento
+    - Cohete 
+    - Sitio de lanzamiento
+    - Parche
+- Cada launch tendrá su propia pagina que debe tener
+    - Parche
+    - Nombre de cohete
+    - Nombre de mision
+    - Tipo de cohete 
+    - Año y fecha de lanzamiento
+    - Numero de mision 
+    - Link de reddit si lo tiene 
+    - Link de wikipedia si lo tiene 
+    - Link de youtube si lo tiene 
+    - Galeria de flicker si la tiene 
+    - link de articulo
+- Debe contener scroll infinito pero que venga de 10 en 10 
