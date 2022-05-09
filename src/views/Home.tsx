@@ -1,15 +1,16 @@
 import React, { useEffect } from "react";
-import { Launch } from "../types/launches";
 import CircularProgress from "@mui/material/CircularProgress";
-import * as API from "../../src/features/launches/spacexAPI";
 import { Container } from "@mui/material";
 import { LaunchItem } from "../components/LaunchItem";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { fetchLaunches, selectData } from "../reducers/launches/LaunchesSlice";
 
 export const Home = () => {
-  const [data, setData] = React.useState<Launch[]>([]);
+  const dispatch = useAppDispatch();
+  const data = useAppSelector(selectData);
   useEffect(() => {
-    API.getLaunches().then((res) => setData(res));
-  }, [data]);
+    dispatch(fetchLaunches({}));
+  }, []);
 
   if (data.length === 0) {
     return <CircularProgress />;
