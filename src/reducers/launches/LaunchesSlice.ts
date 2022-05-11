@@ -49,13 +49,18 @@ export const launchesSlice = createSlice({
     wipeLaunches: (state) => {
       state.data = [];
       state.currentPage = 0;
+    },
+    resetLaunches: (state) => {
+      state.data = [];
+      state.currentPage = 0;
       state.firstTime = true;
     },
     removeFilter: (state, action) => {
       const i = state.previousParams.findIndex((e) =>
         e.includes(action.payload)
       );
-      state.previousParams = state.previousParams.splice(i, i);
+      const a = state.previousParams.splice(i, i);
+      state.previousParams = a;
     },
   },
   extraReducers: (builder) => {
@@ -64,10 +69,11 @@ export const launchesSlice = createSlice({
       state.data = [...state.data, ...action.payload];
       state.currentPage += 10;
       state.previousParams = [...state.previousParams, action.meta.arg.params];
+      console.log(state.previousParams);
       state.isInProcess = false;
       state.hasMore = action.payload.length !== 10 ? false : true;
     });
-    builder.addCase(fetchLaunches.pending, (state, action) => {
+    builder.addCase(fetchLaunches.pending, (state) => {
       state.isInProcess = true;
     });
   },

@@ -17,7 +17,6 @@ export const Filter = ({ params }: { params: Options }) => {
 
   useEffect(() => {
     getOptions(params.value).then((res) => {
-      console.log(`${params.value} ${res}`);
       setOptions(res);
     });
   }, []);
@@ -27,6 +26,7 @@ export const Filter = ({ params }: { params: Options }) => {
       dispatch(removeFilter(params.value));
       dispatch(wipeLaunches());
       if (selectValue === "remove") {
+        dispatch(removeFilter(params.value));
         dispatch(fetchLaunches({ params: "" }));
       } else {
         dispatch(fetchLaunches({ params: `&${params.value}=${selectValue}` }));
