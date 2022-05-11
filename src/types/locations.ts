@@ -1,0 +1,20 @@
+export default interface LocationFetch {
+  id: number;
+  name: string;
+  status: string;
+  location: Location;
+  vehicles_launched: string[];
+  attempted_launches: number;
+  successful_launches: number;
+  wikipedia: string;
+  details: string;
+  site_id: string;
+  site_name_long: string;
+}
+
+interface Location {
+  name: string;
+  region: string;
+  latitude: number;
+  longitude: number;
+}

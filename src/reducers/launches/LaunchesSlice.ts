@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState, AppThunk } from "../../app/store";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { RootState } from "../../app/store";
 import { Launch } from "../../types/launches";
 import * as spacexAPI from "../launches/spacexAPI";
 
@@ -8,6 +8,9 @@ interface LaunchSliceState {
   currentPage: number;
   firstTime: boolean;
   bookmarks: Launch[];
+  previousParams: string[];
+  isInProcess: boolean;
+  hasMore: boolean;
 }
 
 const initialState: LaunchSliceState = {
@@ -15,19 +18,26 @@ const initialState: LaunchSliceState = {
   currentPage: 0,
   firstTime: true,
   bookmarks: [],
+  previousParams: [],
+  isInProcess: false,
+  hasMore: true,
 };
 
 export const fetchLaunches = createAsyncThunk<
   Launch[],
-  {},
+  { params: string },
   { state: RootState }
->("launches/fetchLaunches", async (_, { getState }) => {
-  const { firstTime, currentPage } = getState().launches;
+>("launches/fetchLaunches", async (arg, { getState }) => {
+  const { firstTime, currentPage, previousParams } = getState().launches;
   if (firstTime) {
-    const resp = await spacexAPI.getLaunches();
+    // const params: string[] = [...previousParams, ...arg.params];
+    const resp = await spacexAPI.getLaunches([]);
     return resp;
   } else {
-    const resp = await spacexAPI.getLaunches(currentPage + 10);
+    const resp = await spacexAPI.getLaunches(
+      [...previousParams, arg.params],
+      currentPage + 10
+    );
     return resp;
   }
 });
@@ -41,17 +51,33 @@ export const launchesSlice = createSlice({
       state.currentPage = 0;
       state.firstTime = true;
     },
+    removeFilter: (state, action) => {
+      const i = state.previousParams.findIndex((e) =>
+        e.includes(action.payload)
+      );
+      state.previousParams = state.previousParams.splice(i, i);
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchLaunches.fulfilled, (state, action) => {
       state.firstTime = false;
       state.data = [...state.data, ...action.payload];
       state.currentPage += 10;
+      state.previousParams = [...state.previousParams, action.meta.arg.params];
+      state.isInProcess = false;
+      state.hasMore = action.payload.length !== 10 ? false : true;
+    });
+    builder.addCase(fetchLaunches.pending, (state, action) => {
+      state.isInProcess = true;
     });
   },
 });
 
-export const { wipeLaunches } = launchesSlice.actions;
+export const { wipeLaunches, removeFilter } = launchesSlice.actions;
 export const selectData = (state: RootState) => state.launches.data;
-
+export const selectIsInProcess = (state: RootState) =>
+  state.launches.isInProcess;
+export const selectHasMore = (state: RootState) => state.launches.hasMore;
+export const selectPreviousParams = (state: RootState) =>
+  state.launches.previousParams;
 export default launchesSlice.reducer;

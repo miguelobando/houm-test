@@ -12,14 +12,17 @@ import {
 } from "@mui/material";
 export const LaunchItem = ({ data }: { data: Launch[] }) => {
   return (
-    <Grid container spacing={2}>
+    <>
       {data.map((e, i) => (
         <Grid item xs={8} md={4} lg={4}>
           <Card key={i} sx={{ position: "relative" }}>
             <CardMedia
               component="img"
               height="194"
-              image="https://farm8.staticflickr.com/7615/16670240949_8d43db0e36_o.jpg"
+              image={
+                e.links.flickr_images[0] ??
+                "https://farm8.staticflickr.com/7615/16670240949_8d43db0e36_o.jpg"
+              }
             />
             <Typography
               sx={{
@@ -53,6 +56,6 @@ export const LaunchItem = ({ data }: { data: Launch[] }) => {
           </Card>
         </Grid>
       ))}
-    </Grid>
+    </>
   );
 };
