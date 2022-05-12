@@ -19,7 +19,7 @@ export const Filter = ({
   setFilter: (id: string, value: string) => void;
 }) => {
   const [options, setOptions] = useState<Options[]>([]);
-  const [selectValue, setSelectValue] = useState("remove");
+  const [selectValue, setSelectValue] = useState("");
 
   useEffect(() => {
     getOptions(params.value).then((res) => {
@@ -49,7 +49,7 @@ export const Filter = ({
             }}
             value={selectValue}
           >
-            <MenuItem value={"remove"}> {"Todos"} </MenuItem>
+            <MenuItem value={""}> {"Todos"} </MenuItem>
             {options.map((e, i) => {
               return (
                 <MenuItem key={i} value={e.value}>

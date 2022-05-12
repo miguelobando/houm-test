@@ -14,7 +14,7 @@ export async function getLaunches(
   params: string,
   currentPage: number = 0
 ): Promise<Launch[]> {
-  let src: string = `${LAUNCH_API}?offset=${currentPage}&limit=10&${params}`;
+  let src: string = `${LAUNCH_API}?offset=${currentPage}&limit=10${params}`;
   const resp = await fetch(src);
   return await resp.json();
 }
@@ -58,7 +58,7 @@ export async function getOptions(key: string): Promise<Options[]> {
       const dataRocket: Options[] = resRocket.map((e) => {
         return {
           label: e.rocket_name,
-          value: e.rocket_id,
+          value: e.rocket_name,
         };
       });
       return dataRocket;

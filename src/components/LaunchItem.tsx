@@ -21,6 +21,7 @@ import { useNavigate } from "react-router-dom";
 export const LaunchItem = ({ data }: { data: Launch[] }) => {
   const navigate = useNavigate();
 
+  const lastItem = data.length - 1;
   const sendTo = (id: number) => {
     navigate(`/launch/${id}`);
   };
