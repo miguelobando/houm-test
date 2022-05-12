@@ -14,14 +14,13 @@ import {
 } from "@mui/material";
 import {
   CardHoum,
-  LaunchTypography,
-  RocketTypography,
+  ChipLaunch,
+  TypographyRocket,
 } from "../styles-css/components";
 import { useNavigate } from "react-router-dom";
 export const LaunchItem = ({ data }: { data: Launch[] }) => {
   const navigate = useNavigate();
 
-  const lastItem = data.length - 1;
   const sendTo = (id: number) => {
     navigate(`/launch/${id}`);
   };
@@ -57,7 +56,7 @@ export const LaunchItem = ({ data }: { data: Launch[] }) => {
                   alignSelf="center"
                   justifySelf="center"
                 >
-                  <LaunchTypography
+                  <ChipLaunch
                     label={e.launch_success ? "Exitoso" : "Fallido"}
                     sx={{
                       backgroundColor: e.launch_success ? "#99D271" : "#FF452B",
@@ -73,10 +72,10 @@ export const LaunchItem = ({ data }: { data: Launch[] }) => {
               </CardContent>
               <CardMedia>
                 <Divider />
-                <RocketTypography>
+                <TypographyRocket>
                   <RocketOutlinedIcon fontSize="small" />
                   {`${e.rocket.rocket_name}`}
-                </RocketTypography>
+                </TypographyRocket>
               </CardMedia>
             </CardActionArea>
           </CardHoum>

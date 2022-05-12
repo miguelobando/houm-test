@@ -6,15 +6,14 @@ import { Launch } from "../types/launches";
 import LocationFetch from "../types/locations";
 import RocketsFetch from "../types/rockets";
 import Options from "../types/options";
-const LAUNCH_API = "https://api.spacexdata.com/v3/launches/past";
+const LAUNCH_API = "https://api.spacexdata.com/v3/launches";
 const LOCATION_API = "https://api.spacexdata.com/v3/launchpads";
 const ROCKET_API = "https://api.spacexdata.com/v3/rockets";
-
 export async function getLaunches(
   params: string,
   currentPage: number = 0
 ): Promise<Launch[]> {
-  let src: string = `${LAUNCH_API}?offset=${currentPage}&limit=10${params}`;
+  let src: string = `${LAUNCH_API}/past?offset=${currentPage}&limit=10${params}`;
   const resp = await fetch(src);
   return await resp.json();
 }
@@ -63,4 +62,10 @@ export async function getOptions(key: string): Promise<Options[]> {
       });
       return dataRocket;
   }
+}
+
+export async function getSingleLaunch(id: string): Promise<Launch> {
+  const src: string = `${LAUNCH_API}/${id}`;
+  const resp = await fetch(src);
+  return await resp.json();
 }

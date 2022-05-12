@@ -1,12 +1,13 @@
 import { AppBar, Toolbar, Typography } from "@mui/material";
+import { AppBarHoum } from "../styles-css/components";
 export const Header = () => {
   return (
     <div>
-      <AppBar position="sticky" sx={{ marginBottom: "10px" }}>
-        <Toolbar>
-          <Typography variant="h6">Houm</Typography>
+      <AppBarHoum position="sticky">
+        <Toolbar sx={{ backgroundColor: "white" }}>
+          <img src="/images/HoumLogo.svg" alt="" />
         </Toolbar>
-      </AppBar>
+      </AppBarHoum>
     </div>
   );
 };

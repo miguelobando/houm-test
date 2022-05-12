@@ -5,11 +5,12 @@ import {
   InputLabel,
   SelectChangeEvent,
   Grid,
+  OutlinedInput,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { getOptions } from "../services/spacexAPI";
-import { CircularProgress } from "@mui/material";
 import Options from "../types/options";
+import { CircularProgressHoum } from "../styles-css/components";
 
 export const Filter = ({
   params,
@@ -34,23 +35,31 @@ export const Filter = ({
 
   // Sacar el caso de borde en caso de que el backend falle
   if (!options.length) {
-    return <CircularProgress size="xs" />;
+    return <CircularProgressHoum size="xs" />;
   } else {
     return (
       <Grid item xs={12} md={4} lg={4}>
         <FormControl fullWidth>
-          <InputLabel id={params.value}>{params.label}</InputLabel>
           <Select
             label={params.label}
             labelId={params.value}
             onChange={handleOptionSelected}
+            displayEmpty
             sx={{
               marginBottom: "20px",
               maxWidth: "250px",
             }}
             value={selectValue}
+            renderValue={(selected) => {
+              if (!selected) {
+                return <em>{params.label}</em>;
+              }
+              return selected;
+            }}
           >
-            <MenuItem value={""}> {"Todos"} </MenuItem>
+            <MenuItem disabled value="">
+              {params.label}
+            </MenuItem>
             {options.map((e, i) => {
               return (
                 <MenuItem key={i} value={e.value}>

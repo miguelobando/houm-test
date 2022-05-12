@@ -1,4 +1,5 @@
 import CircularProgress from "@mui/material/CircularProgress";
+import { CircularProgressHoum } from "../styles-css/components";
 import { Grid, Typography } from "@mui/material";
 import { LaunchItem } from "../components/LaunchItem";
 import { useLaunches } from "../hooks/useLaunches";
@@ -17,7 +18,7 @@ export const Home = () => {
   });
 
   if (launches.length === 0 && isLoading) {
-    return <CircularProgress />;
+    return <CircularProgressHoum />;
   } else if (launches.length === 0 && !isLoading) {
     return (
       <Grid container>
@@ -51,7 +52,7 @@ export const Home = () => {
         >
           {hasMore && (
             <Grid item justifySelf="center" ref={sentryRef}>
-              <CircularProgress />
+              <CircularProgressHoum />
             </Grid>
           )}
         </Grid>

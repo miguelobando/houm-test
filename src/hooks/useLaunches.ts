@@ -8,40 +8,43 @@ export const useLaunches = () => {
   const [query, setQuery] = useState<Record<string, string>>({
     launch_year: "",
     site_id: "",
-    rocket_id: "",
-    launch_sucess: "",
+    rocket_name: "",
+    launch_success: "",
   });
-  const [flag, setFlag] = useState<boolean>(false);
 
   const [currentPage, setCurrentPage] = useState<number>(0);
 
-  const [isLoading, SetIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const [hasMore, setHasMore] = useState<boolean>(true);
 
   useEffect(() => {
     const queryParams = new URLSearchParams(query).toString();
     console.log(queryParams);
+
     API.getLaunches(queryParams, 0).then((data: Launch[]) => {
       setLaunches(data);
       setCurrentPage(0);
-      SetIsLoading(false);
+      setIsLoading(false);
     });
   }, [query]);
 
   const addMore = () => {
-    SetIsLoading(true);
+    setIsLoading(true);
     setCurrentPage(currentPage + 10);
     const queryParams = new URLSearchParams(query).toString();
 
-    API.getLaunches(queryParams, currentPage).then((data: Launch[]) => {
-      if (!data.length) {
-        setHasMore(false);
-      } else {
-        setLaunches([...launches, ...data]);
-      }
-      SetIsLoading(false);
-    });
+    API.getLaunches(queryParams, currentPage)
+      .then((data: Launch[]) => {
+        if (!data.length) {
+          setHasMore(false);
+        } else {
+          setLaunches([...launches, ...data]);
+        }
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   const setFilter = (id: string, value: string) => {

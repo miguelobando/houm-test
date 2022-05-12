@@ -13,7 +13,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/launch/:id" element={<LaunchDetails />} />
+        <Route path="/launch/:launchId" element={<LaunchDetails />} />
       </Routes>
       {/* </Provider> */}
     </>

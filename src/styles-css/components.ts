@@ -1,4 +1,13 @@
-import { Card, Chip, styled, Typography } from "@mui/material";
+import {
+  AppBar,
+  Card,
+  Chip,
+  CircularProgress,
+  styled,
+  Typography,
+} from "@mui/material";
+
+/*  CARD SECTION  */
 
 export const CardHoum = styled(Card)({
   borderRadius: "12px",
@@ -11,7 +20,7 @@ export const CardHoum = styled(Card)({
   marginLeft: "20px",
   marginRight: "20px",
 });
-export const LaunchTypography = styled(Chip)({
+export const ChipLaunch = styled(Chip)({
   fontFamily: "'Nunito', sans-serif",
   letterSpacing: "-0.015rem",
   fontWeight: "bold",
@@ -19,7 +28,7 @@ export const LaunchTypography = styled(Chip)({
   color: "white",
 });
 
-export const RocketTypography = styled(Typography)({
+export const TypographyRocket = styled(Typography)({
   fontSize: "0.75rem",
   lineHeight: "1em",
   alignSelf: "flex-end",
@@ -27,3 +36,34 @@ export const RocketTypography = styled(Typography)({
   marginLeft: "10px",
   marginBottom: "10px",
 });
+
+export const CircularProgressHoum = styled(CircularProgress)({
+  color: "#FF452B",
+});
+
+export const AppBarHoum = styled(AppBar)({
+  marginBottom: "10px",
+  color: "white",
+});
+
+export const TypographyMission = styled(Typography)({
+  fontFamily: "'Nunito', sans-serif",
+  letterSpacing: "-0.015rem",
+  fontWeight: "700",
+  fontSize: "2rem",
+  color: "#212121",
+  lineHeight: "1.3em",
+});
+
+export const TypographySubtitle = styled(Typography)({
+  fontFamily: "'Nunito', sans-serif",
+  fontSize: "1.25rem",
+  lineHeight: "1.35em",
+  letterSpacing: "-0.015em",
+  fontWeight: "700",
+});
+
+export const iconStyle = {
+  fontSize: "3.5rem",
+  cursor: "pointer",
+};

@@ -1,7 +1,3 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
-
 ## Available Scripts
 
 In the project directory, you can run:
@@ -29,24 +25,24 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-
 Basado en Launches
+
 - Cada launch se podrá filtrar por:
-    - Fue exitoso o no
-    - Año y fecha de lanzamiento
-    - Cohete 
-    - Sitio de lanzamiento
-    - Parche
+  - Fue exitoso o no
+  - Año y fecha de lanzamiento
+  - Cohete
+  - Sitio de lanzamiento
+  - Parche
 - Cada launch tendrá su propia pagina que debe tener
-    - Parche
-    - Nombre de cohete
-    - Nombre de mision
-    - Tipo de cohete 
-    - Año y fecha de lanzamiento
-    - Numero de mision 
-    - Link de reddit si lo tiene 
-    - Link de wikipedia si lo tiene 
-    - Link de youtube si lo tiene 
-    - Galeria de flicker si la tiene 
-    - link de articulo
-- Debe contener scroll infinito pero que venga de 10 en 10 
+  - Parche
+  - Nombre de cohete
+  - Nombre de mision
+  - Tipo de cohete
+  - Año y fecha de lanzamiento
+  - Numero de mision
+  - Link de reddit si lo tiene
+  - Link de wikipedia si lo tiene
+  - Link de youtube si lo tiene
+  - Galeria de flicker si la tiene
+  - link de articulo
+- Debe contener scroll infinito pero que venga de 10 en 10
