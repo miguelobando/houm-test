@@ -25,13 +25,14 @@ export const Filter = ({
     getOptions(params.value).then((res) => {
       setOptions(res);
     });
-  }, []);
+  }, [params.value]);
 
   const handleOptionSelected = (event: SelectChangeEvent) => {
     setSelectValue(event.target.value as string);
-    setFilter(params.value, selectValue);
+    setFilter(params.value, event.target.value);
   };
 
+  // Sacar el caso de borde en caso de que el backend falle
   if (!options.length) {
     return <CircularProgress size="xs" />;
   } else {

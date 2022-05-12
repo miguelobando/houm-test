@@ -27,7 +27,7 @@ export const useLaunches = () => {
       setCurrentPage(0);
       SetIsLoading(false);
     });
-  }, [query, flag]);
+  }, [query]);
 
   const addMore = () => {
     SetIsLoading(true);
@@ -45,11 +45,14 @@ export const useLaunches = () => {
   };
 
   const setFilter = (id: string, value: string) => {
-    const result: Record<string, string> = query;
+    const result: Record<string, string> = { ...query };
+
     result[id] = value;
     setQuery(result);
-    setFlag(!flag);
+    //setFlag(!flag);
   };
+
+  console.log("query", query);
 
   return {
     launches,
