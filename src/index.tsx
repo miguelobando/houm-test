@@ -9,14 +9,12 @@ const root = createRoot(container);
 
 root.render(
   <>
-    <React.StrictMode>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      />
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </React.StrictMode>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </>
 );

@@ -1,55 +1,61 @@
-import React, { useEffect } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
-import { Container, Grid, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { LaunchItem } from "../components/LaunchItem";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
-import {
-  fetchLaunches,
-  selectData,
-  selectIsInProcess,
-  selectPreviousParams,
-  selectHasMore,
-} from "../reducers/launches/LaunchesSlice";
-import { FiltersBar } from "../components/FiltersBar";
-import InfiniteScroll from "react-infinite-scroller";
-
+import { useLaunches } from "../hooks/useLaunches";
+import useInfiniteScroll from "react-infinite-scroll-hook";
+import { orderParams } from "../app/options";
+import { Filter } from "../components/Filter";
 export const Home = () => {
-  const dispatch = useAppDispatch();
-  const data = useAppSelector(selectData);
-  const isInProcess = useAppSelector(selectIsInProcess);
-  const previousParams = useAppSelector(selectPreviousParams);
-  const hasMore = useAppSelector(selectHasMore);
-  useEffect(() => {
-    dispatch(fetchLaunches({ params: "" }));
-  }, []);
+  const { launches, setFilter, addMore, isLoading, hasMore } = useLaunches();
 
-  const addMore = () => {
-    dispatch(fetchLaunches({ params: "" }));
-  };
+  const [sentryRef] = useInfiniteScroll({
+    loading: isLoading,
+    hasNextPage: hasMore,
+    onLoadMore: addMore,
+    disabled: false,
+    rootMargin: "0px 0px 400px 0px",
+  });
 
-  if (data.length === 0 && isInProcess) return <CircularProgress />;
-
-  if (data.length === 0 && !isInProcess)
+  if (launches.length === 0 && isLoading) {
+    return <CircularProgress />;
+  } else if (launches.length === 0 && !isLoading) {
     return (
-      <Container>
-        <FiltersBar />
-        <Typography>{"No data getted"}</Typography>
-      </Container>
-    );
-
-  return (
-    <Container>
-      <FiltersBar />
-      <InfiniteScroll
-        pageStart={0}
-        loadMore={addMore}
-        hasMore={hasMore}
-        loader={<CircularProgress />}
-      >
-        <Grid container spacing={2}>
-          <LaunchItem data={data}></LaunchItem>
+      <Grid container>
+        {orderParams.map((e) => {
+          return <Filter params={e} setFilter={setFilter} />;
+        })}
+        <Grid item xs={12} md={4} lg={4}>
+          <Typography alignSelf="center">{"Sin datos"}</Typography>
         </Grid>
-      </InfiniteScroll>
-    </Container>
-  );
+      </Grid>
+    );
+  } else {
+    return (
+      <>
+        <Grid container marginLeft={3}>
+          {orderParams.map((e) => {
+            return <Filter params={e} setFilter={setFilter} />;
+          })}
+        </Grid>
+
+        <Grid container spacing={2}>
+          <LaunchItem data={launches} />
+        </Grid>
+        <Grid
+          container
+          spacing={0}
+          direction="column"
+          alignItems="center"
+          justifyContent="center"
+          style={{ minHeight: "10vh" }}
+        >
+          {hasMore && (
+            <Grid item justifySelf="center" ref={sentryRef}>
+              <CircularProgress />
+            </Grid>
+          )}
+        </Grid>
+      </>
+    );
+  }
 };

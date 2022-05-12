@@ -2,23 +2,20 @@
 Todos los métodos de la api de space X
 */
 
-import { Launch } from "../../types/launches";
-import LocationFetch from "../../types/locations";
-import RocketsFetch from "../../types/rockets";
-import Options from "../../types/options";
+import { Launch } from "../types/launches";
+import LocationFetch from "../types/locations";
+import RocketsFetch from "../types/rockets";
+import Options from "../types/options";
 const LAUNCH_API = "https://api.spacexdata.com/v3/launches/past";
 const LOCATION_API = "https://api.spacexdata.com/v3/launchpads";
 const ROCKET_API = "https://api.spacexdata.com/v3/rockets";
 
 export async function getLaunches(
-  params: string[] = [],
+  params: string,
   currentPage: number = 0
 ): Promise<Launch[]> {
-  let src: string[] = [
-    `${LAUNCH_API}?offset=${currentPage}&limit=10`,
-    ...params,
-  ];
-  const resp = await fetch(src.join(""));
+  let src: string = `${LAUNCH_API}?offset=${currentPage}&limit=10&${params}`;
+  const resp = await fetch(src);
   return await resp.json();
 }
 

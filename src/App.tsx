@@ -3,17 +3,19 @@ import "./App.css";
 import { Header } from "./components/Header";
 import { Routes, Route } from "react-router-dom";
 import { Home } from "./views/Home";
-import { Provider } from "react-redux";
-import { store } from "./app/store";
+// import { Provider } froms "react-redux";
+// import { store } from "./app/store";
+import { LaunchDetails } from "./views/LaunchDetails";
 function App() {
   return (
     <>
-      <Provider store={store}>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </Provider>
+      {/* <Provider store={store}> */}
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/launch/:id" element={<LaunchDetails />} />
+      </Routes>
+      {/* </Provider> */}
     </>
   );
 }
