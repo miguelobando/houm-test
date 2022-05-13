@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import * as API from "../services/spacexAPI";
 import { Launch } from "../types/launches";
-import { getParams } from "../utils";
 
 export const useLaunches = () => {
   const [launches, setLaunches] = useState<Launch[]>([]);
@@ -20,7 +19,6 @@ export const useLaunches = () => {
 
   useEffect(() => {
     const queryParams = new URLSearchParams(query).toString();
-    console.log(queryParams);
 
     API.getLaunches(queryParams, 0).then((data: Launch[]) => {
       setLaunches(data);
@@ -47,15 +45,9 @@ export const useLaunches = () => {
       });
   };
 
-  const setFilter = (id: string, value: string) => {
-    const result: Record<string, string> = { ...query };
-
-    result[id] = value;
-    setQuery(result);
-    //setFlag(!flag);
+  const setFilter = (newQuery: Record<string, string>) => {
+    setQuery(newQuery);
   };
-
-  console.log("query", query);
 
   return {
     launches,

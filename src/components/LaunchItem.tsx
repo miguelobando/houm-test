@@ -67,7 +67,7 @@ export const LaunchItem = ({ data }: { data: Launch[] }) => {
 
               <CardContent>
                 <Typography>
-                  {`Launch Site: ${e.launch_site.site_name}`}
+                  {`Lugar de lanzamiento: ${e.launch_site.site_name}`}
                 </Typography>
               </CardContent>
               <CardMedia>

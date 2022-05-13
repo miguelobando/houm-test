@@ -1,6 +1,4 @@
-import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
-
 import {
   DialogActions,
   DialogContent,
@@ -11,6 +9,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import {
+  ButtonFilter,
   ButtonSuscribe,
   PaperHoum,
   TypographyFilter,
@@ -18,19 +17,37 @@ import {
 } from "../styles-css/components";
 import { orderParams } from "../app/options";
 import { Filter } from "../components/Filter";
-
+import TuneRoundedIcon from "@mui/icons-material/TuneRounded";
 export function FilterBar({
   setFilter,
 }: {
-  setFilter: (id: string, value: string) => void;
+  setFilter: (a: Record<string, string>) => void;
 }) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [query, setQuery] = useState<Record<string, string>>({
+    launch_year: "",
+    site_id: "",
+    rocket_name: "",
+    launch_success: "",
+  });
+  const setStack = (key: string, value: string) => {
+    const result = { ...query };
+    result[key] = value;
+    setQuery(result);
+  };
+
+  const setAllQuery = () => {
+    setFilter(query);
+    handleClose();
+  };
 
   return (
     <div>
-      <Button onClick={handleOpen}>Filtros</Button>
+      <ButtonFilter onClick={handleOpen}>
+        <TuneRoundedIcon /> Filtros
+      </ButtonFilter>
       <Modal
         open={open}
         onClose={handleClose}
@@ -65,7 +82,7 @@ export function FilterBar({
                         </TypographyFilterOption>
                       </Grid>
                       <Grid item xs={12} sm={12} md={6}>
-                        <Filter setFilter={setFilter} params={e} />
+                        <Filter setStack={setStack} params={e} />
                       </Grid>
                     </Grid>
                   </ListItem>
@@ -74,7 +91,7 @@ export function FilterBar({
             </List>
           </DialogContent>
           <DialogActions>
-            <ButtonSuscribe onClick={handleClose}>
+            <ButtonSuscribe onClick={() => setAllQuery()}>
               {"Aplicar Filtros"}
             </ButtonSuscribe>
           </DialogActions>

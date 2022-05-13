@@ -19,11 +19,16 @@ export const Home = () => {
     return <CircularProgressHoum />;
   } else if (launches.length === 0 && !isLoading) {
     return (
-      <Grid container>
-        <Grid item xs={12} md={4} lg={4}>
-          <Typography alignSelf="center">{"Sin datos"}</Typography>
+      <>
+        <Grid container marginLeft={3}>
+          <FilterBar setFilter={setFilter} />
         </Grid>
-      </Grid>
+        <Grid container>
+          <Grid item justifyItems="center">
+            <Typography justifySelf="center">{"Sin datos"}</Typography>
+          </Grid>
+        </Grid>
+      </>
     );
   } else {
     return (

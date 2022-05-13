@@ -109,3 +109,12 @@ export const PaperHoum = styled(Paper)({
   maxWidth: "800px",
   borderRadius: "16px",
 });
+
+export const ButtonFilter = styled(Button)<ButtonProps>(({ theme }) => ({
+  backgroundColor: "#263238",
+  "&:hover": {
+    backgroundColor: "#607D8B",
+  },
+  color: "white",
+  borderRadius: "36px",
+}));

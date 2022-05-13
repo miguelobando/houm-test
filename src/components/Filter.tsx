@@ -11,10 +11,10 @@ import { CircularProgressHoum } from "../styles-css/components";
 
 export const Filter = ({
   params,
-  setFilter,
+  setStack,
 }: {
   params: Options;
-  setFilter: (id: string, value: string) => void;
+  setStack: (key: string, value: string) => void;
 }) => {
   const [options, setOptions] = useState<Options[]>([]);
   const [selectValue, setSelectValue] = useState("");
@@ -27,7 +27,7 @@ export const Filter = ({
 
   const handleOptionSelected = (event: SelectChangeEvent) => {
     setSelectValue(event.target.value as string);
-    setFilter(params.value, event.target.value);
+    setStack(params.value, event.target.value);
   };
 
   // Sacar el caso de borde en caso de que el backend falle
