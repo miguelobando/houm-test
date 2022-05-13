@@ -17,7 +17,7 @@ export const Header = () => {
         <Toolbar sx={{ backgroundColor: "white" }}>
           <Link to="/">
             <img
-              src="/images/HoumLogo.svg"
+              src="../images/houmLogo.svg"
               alt="Houm Logo"
               style={{ cursor: "pointer" }}
             />

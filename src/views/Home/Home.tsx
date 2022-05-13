@@ -1,4 +1,7 @@
-import { CircularProgressHoum } from "../../styles/components";
+import {
+  CircularProgressHoum,
+  TypographyFilter,
+} from "../../styles/components";
 import { Grid, Typography } from "@mui/material";
 import { LaunchItem } from "./parts/LaunchItem";
 import { useLaunches } from "../../hooks/useLaunches";
@@ -23,9 +26,13 @@ export const Home = () => {
         <Grid container marginLeft={3}>
           <FilterBar setFilter={setFilter} />
         </Grid>
-        <Grid container>
-          <Grid item justifyItems="center">
-            <Typography justifySelf="center">{"Sin datos"}</Typography>
+        <Grid container justifyContent="center">
+          <Grid item justifyContent="center">
+            <TypographyFilter height={100} justifySelf="center">
+              {
+                "¡Lo sentimos! No se encontraron lanzamientos con los parámetros ingresados"
+              }
+            </TypographyFilter>
           </Grid>
         </Grid>
       </>
