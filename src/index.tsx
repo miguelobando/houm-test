@@ -9,10 +9,6 @@ const root = createRoot(container);
 
 root.render(
   <>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
     <BrowserRouter>
       <App />
     </BrowserRouter>

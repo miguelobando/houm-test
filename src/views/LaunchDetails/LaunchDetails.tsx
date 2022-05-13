@@ -1,16 +1,16 @@
 import { Container, Divider, Grid, Stack } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { MissionNameAndPatch } from "../components/LaunchDetailsComponents/MissionNameAndPatch";
-import { getSingleLaunch } from "../services/spacexAPI";
+import { MissionNameAndPatch } from "./parts/MissionNameAndPatch";
+import { getSingleLaunch } from "../../services/spacexAPI";
 import {
   ChipLaunch,
   CircularProgressHoum,
   TypographySubtitle,
-} from "../styles-css/components";
-import { Launch } from "../types/launches";
-import { LinkList } from "../components/LaunchDetailsComponents/LinkList";
-import { Description } from "../components/LaunchDetailsComponents/Description";
+} from "../../styles-css/components";
+import { Launch } from "../../types/launches";
+import { LinkList } from "./parts/LinkList";
+import { Description } from "./parts/Description";
 export const LaunchDetails = () => {
   const { launchId } = useParams();
   const [data, setData] = useState<Launch>();
@@ -19,7 +19,7 @@ export const LaunchDetails = () => {
     getSingleLaunch(launchId).then((resp) => {
       setData(resp);
     });
-  }, []);
+  }, [launchId]);
 
   if (!data) {
     return <CircularProgressHoum />;

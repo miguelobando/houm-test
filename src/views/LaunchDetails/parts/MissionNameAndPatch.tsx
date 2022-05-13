@@ -1,5 +1,5 @@
 import { Avatar, Grid } from "@mui/material";
-import { TypographyMission } from "../../styles-css/components";
+import { TypographyMission } from "../../../styles-css/components";
 
 export const MissionNameAndPatch = ({
   missionName,

@@ -1,9 +1,7 @@
 import { Grid, Stack, Typography } from "@mui/material";
 import ShowMoreText from "react-show-more-text";
-import ExpandLessSharpIcon from "@mui/icons-material/ExpandLessSharp";
-import ExpandMoreSharpIcon from "@mui/icons-material/ExpandMoreSharp";
 import { useEffect, useState } from "react";
-import { TypographySubtitle } from "../../styles-css/components";
+import { TypographySubtitle } from "../../../styles-css/components";
 
 export const Description = ({ description }: { description: string }) => {
   const [expand, setExpand] = useState(false);
@@ -24,7 +22,7 @@ export const Description = ({ description }: { description: string }) => {
     <Grid container>
       <Stack>
         <TypographySubtitle>{"Descripción"}</TypographySubtitle>
-        <ShowMoreText
+        {/* <ShowMoreText
           lines={2}
           more={"Ver más"}
           less={"Ver menos"}
@@ -32,9 +30,9 @@ export const Description = ({ description }: { description: string }) => {
           expanded={expand}
           width={30}
           truncatedEndingComponent={truncatedText}
-        >
-          <Typography>{description}</Typography>
-        </ShowMoreText>
+        > */}
+        <Typography>{description}</Typography>
+        {/* </ShowMoreText> */}
       </Stack>
     </Grid>
   );

@@ -1,4 +1,3 @@
-import CircularProgress from "@mui/material/CircularProgress";
 import { CircularProgressHoum } from "../styles-css/components";
 import { Grid, Typography } from "@mui/material";
 import { LaunchItem } from "../components/LaunchItem";
@@ -6,6 +5,7 @@ import { useLaunches } from "../hooks/useLaunches";
 import useInfiniteScroll from "react-infinite-scroll-hook";
 import { orderParams } from "../app/options";
 import { Filter } from "../components/Filter";
+import { FilterBar } from "./FilterBar";
 export const Home = () => {
   const { launches, setFilter, addMore, isLoading, hasMore } = useLaunches();
 
@@ -37,6 +37,7 @@ export const Home = () => {
           {orderParams.map((e) => {
             return <Filter params={e} setFilter={setFilter} />;
           })}
+          <FilterBar />
         </Grid>
 
         <Grid container spacing={2}>
