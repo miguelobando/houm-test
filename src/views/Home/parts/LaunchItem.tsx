@@ -1,4 +1,4 @@
-import { Launch } from "../types/launches";
+import { Launch } from "../../../types/launches";
 import dayjs from "dayjs";
 import "dayjs/locale/es-mx";
 import RocketOutlinedIcon from "@mui/icons-material/RocketOutlined";
@@ -16,7 +16,7 @@ import {
   CardHoum,
   ChipLaunch,
   TypographyRocket,
-} from "../styles-css/components";
+} from "../../../styles/components";
 import { useNavigate } from "react-router-dom";
 export const LaunchItem = ({ data }: { data: Launch[] }) => {
   const navigate = useNavigate();

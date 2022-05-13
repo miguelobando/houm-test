@@ -7,7 +7,7 @@ import {
   ChipLaunch,
   CircularProgressHoum,
   TypographySubtitle,
-} from "../../styles-css/components";
+} from "../../styles/components";
 import { Launch } from "../../types/launches";
 import { LinkList } from "./parts/LinkList";
 import { Description } from "./parts/Description";

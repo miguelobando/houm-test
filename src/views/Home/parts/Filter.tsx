@@ -5,9 +5,9 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import { getOptions } from "../services/spacexAPI";
-import Options from "../types/options";
-import { CircularProgressHoum } from "../styles-css/components";
+import { getOptions } from "../../../services/spacexAPI";
+import Options from "../../../types/options";
+import { CircularProgressHoum } from "../../../styles/components";
 
 export const Filter = ({
   params,
@@ -30,7 +30,6 @@ export const Filter = ({
     setStack(params.value, event.target.value);
   };
 
-  // Sacar el caso de borde en caso de que el backend falle
   if (!options.length) {
     return <CircularProgressHoum size="xs" />;
   } else {
@@ -48,7 +47,8 @@ export const Filter = ({
             }}
             value={selectValue}
             renderValue={(selected) => {
-              if (!selected) {
+              // Esto puede ser mejorado
+              if (!selected || selected === "remove") {
                 return <em>{"Todos"}</em>;
               }
               // Esto puede ser mejorado, es problema de concepto de la api

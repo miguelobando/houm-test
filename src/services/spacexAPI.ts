@@ -13,17 +13,7 @@ export async function getLaunches(
   params: string,
   currentPage: number = 0
 ): Promise<Launch[]> {
-  // Esto se puede hacer mejor :)
-  const reducedParams = params.split("&").reduce((p, c) => {
-    const params = c.split("=");
-    if (params[1] !== "") {
-      return p + "&" + params[0] + "=" + params[1];
-    } else {
-      return p;
-    }
-  }, "");
-
-  let src: string = `${LAUNCH_API}/past?offset=${currentPage}&limit=10&${reducedParams}`;
+  let src: string = `${LAUNCH_API}/past?offset=${currentPage}&limit=10&${params}`;
   const resp = await fetch(src);
   return await resp.json();
 }

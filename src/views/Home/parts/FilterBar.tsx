@@ -8,18 +8,27 @@ import {
   List,
   ListItem,
 } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ButtonFilter,
   ButtonSuscribe,
+  ChipFilter,
   PaperHoum,
   TypographyFilter,
   TypographyFilterOption,
-} from "../styles-css/components";
-import { orderParams } from "../app/options";
-import { Filter } from "../components/Filter";
+} from "../../../styles/components";
+import { orderParams } from "../../../app/options";
+import { Filter } from "./Filter";
 import TuneRoundedIcon from "@mui/icons-material/TuneRounded";
 import CloseIcon from "@mui/icons-material/Close";
+
+const initialState = {
+  launch_year: "",
+  site_id: "",
+  rocket_name: "",
+  launch_success: "",
+};
+
 export function FilterBar({
   setFilter,
 }: {
@@ -28,12 +37,7 @@ export function FilterBar({
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [query, setQuery] = useState<Record<string, string>>({
-    launch_year: "",
-    site_id: "",
-    rocket_name: "",
-    launch_success: "",
-  });
+  const [query, setQuery] = useState<Record<string, string>>(initialState);
   const setStack = (key: string, value: string) => {
     const result = { ...query };
     result[key] = value;
@@ -45,11 +49,28 @@ export function FilterBar({
     handleClose();
   };
 
+  useEffect(() => {
+    if (open) {
+      setQuery(initialState);
+    }
+  }, [open]);
+
   return (
     <div>
       <ButtonFilter onClick={handleOpen}>
         <TuneRoundedIcon /> Filtros
       </ButtonFilter>
+      {Object.entries(query).map(([k, v]) => {
+        if (v !== "remove" && v !== "") {
+          return (
+            <ChipFilter
+              label={v === "false" ? "Fallido" : v === "true" ? "Exitoso" : v}
+            />
+          );
+        } else {
+          return <></>;
+        }
+      })}
       <Modal
         open={open}
         onClose={handleClose}

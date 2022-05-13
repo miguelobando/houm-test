@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { Header } from "./components/Header";
 import { Routes, Route } from "react-router-dom";
-import { Home } from "./views/Home";
+import { Home } from "./views/Home/Home";
 // import { Provider } froms "react-redux";
 // import { store } from "./app/store";
 import { LaunchDetails } from "./views/LaunchDetails/LaunchDetails";

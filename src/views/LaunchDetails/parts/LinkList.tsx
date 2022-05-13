@@ -1,6 +1,6 @@
 import { Grid, SvgIcon } from "@mui/material";
 import { FaWikipediaW } from "react-icons/fa";
-import { iconStyle } from "../../../styles-css/components";
+import { iconStyle } from "../../../styles/components";
 import { Links } from "../../../types/launches";
 import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
 import RedditIcon from "@mui/icons-material/Reddit";

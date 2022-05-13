@@ -118,3 +118,12 @@ export const ButtonFilter = styled(Button)<ButtonProps>(({ theme }) => ({
   color: "white",
   borderRadius: "36px",
 }));
+
+export const ChipFilter = styled(Chip)({
+  color: "#FF452B",
+  fontSize: "1rem",
+  marginRight: "8px",
+  marginLeft: "8px",
+  borderRadius: "6px",
+  backgroundColor: "rgba(255, 69, 43, 0.1)",
+});

@@ -20,10 +20,20 @@ export const useLaunches = () => {
   useEffect(() => {
     const queryParams = new URLSearchParams(query).toString();
 
-    API.getLaunches(queryParams, 0).then((data: Launch[]) => {
+    const reducedParams = queryParams.split("&").reduce((p, c) => {
+      const params = c.split("=");
+      if (params[1] !== "") {
+        return p + "&" + params[0] + "=" + params[1];
+      } else {
+        return p;
+      }
+    }, "");
+
+    API.getLaunches(reducedParams, 0).then((data: Launch[]) => {
       setLaunches(data);
       setCurrentPage(0);
       setIsLoading(false);
+      setHasMore(true);
     });
   }, [query]);
 
@@ -48,7 +58,6 @@ export const useLaunches = () => {
   const setFilter = (newQuery: Record<string, string>) => {
     setQuery(newQuery);
   };
-
   return {
     launches,
     setFilter,

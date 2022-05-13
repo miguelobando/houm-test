@@ -1,9 +1,9 @@
-import { CircularProgressHoum } from "../styles-css/components";
+import { CircularProgressHoum } from "../../styles/components";
 import { Grid, Typography } from "@mui/material";
-import { LaunchItem } from "../components/LaunchItem";
-import { useLaunches } from "../hooks/useLaunches";
+import { LaunchItem } from "./parts/LaunchItem";
+import { useLaunches } from "../../hooks/useLaunches";
 import useInfiniteScroll from "react-infinite-scroll-hook";
-import { FilterBar } from "./FilterBar";
+import { FilterBar } from "./parts/FilterBar";
 export const Home = () => {
   const { launches, setFilter, addMore, isLoading, hasMore } = useLaunches();
 
