@@ -2,10 +2,7 @@ import {
   Select,
   MenuItem,
   FormControl,
-  InputLabel,
   SelectChangeEvent,
-  Grid,
-  OutlinedInput,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { getOptions } from "../services/spacexAPI";
@@ -38,28 +35,33 @@ export const Filter = ({
     return <CircularProgressHoum size="xs" />;
   } else {
     return (
-      <Grid item xs={12} md={4} lg={4}>
+      <>
         <FormControl fullWidth>
           <Select
-            label={params.label}
             labelId={params.value}
             onChange={handleOptionSelected}
             displayEmpty
             sx={{
               marginBottom: "20px",
               maxWidth: "250px",
+              borderRadius: "30px",
             }}
             value={selectValue}
             renderValue={(selected) => {
               if (!selected) {
-                return <em>{params.label}</em>;
+                return <em>{"Todos"}</em>;
               }
+              if (selected === "false") {
+                return "Fallido";
+              }
+              if (selected === "true") {
+                return "Exitoso";
+              }
+
               return selected;
             }}
           >
-            <MenuItem disabled value="">
-              {params.label}
-            </MenuItem>
+            <MenuItem value="">{"Todos"}</MenuItem>
             {options.map((e, i) => {
               return (
                 <MenuItem key={i} value={e.value}>
@@ -69,7 +71,7 @@ export const Filter = ({
             })}
           </Select>
         </FormControl>
-      </Grid>
+      </>
     );
   }
 };

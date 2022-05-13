@@ -3,8 +3,6 @@ import { Grid, Typography } from "@mui/material";
 import { LaunchItem } from "../components/LaunchItem";
 import { useLaunches } from "../hooks/useLaunches";
 import useInfiniteScroll from "react-infinite-scroll-hook";
-import { orderParams } from "../app/options";
-import { Filter } from "../components/Filter";
 import { FilterBar } from "./FilterBar";
 export const Home = () => {
   const { launches, setFilter, addMore, isLoading, hasMore } = useLaunches();
@@ -22,9 +20,6 @@ export const Home = () => {
   } else if (launches.length === 0 && !isLoading) {
     return (
       <Grid container>
-        {orderParams.map((e) => {
-          return <Filter params={e} setFilter={setFilter} />;
-        })}
         <Grid item xs={12} md={4} lg={4}>
           <Typography alignSelf="center">{"Sin datos"}</Typography>
         </Grid>
@@ -34,10 +29,7 @@ export const Home = () => {
     return (
       <>
         <Grid container marginLeft={3}>
-          {orderParams.map((e) => {
-            return <Filter params={e} setFilter={setFilter} />;
-          })}
-          <FilterBar />
+          <FilterBar setFilter={setFilter} />
         </Grid>
 
         <Grid container spacing={2}>

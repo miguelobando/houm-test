@@ -1,8 +1,11 @@
 import {
   AppBar,
+  Button,
+  ButtonProps,
   Card,
   Chip,
   CircularProgress,
+  Paper,
   styled,
   Typography,
 } from "@mui/material";
@@ -63,7 +66,46 @@ export const TypographySubtitle = styled(Typography)({
   fontWeight: "700",
 });
 
+export const TypographyFilter = styled(Typography)({
+  textAlign: "center",
+  fontWeight: "bold",
+  lineHeight: "1.2",
+  fontSize: "1.5rem",
+  maxWidth: "50%",
+  margin: "auto",
+});
+
 export const iconStyle = {
   fontSize: "3.5rem",
   cursor: "pointer",
 };
+
+export const TypographyFilterOption = styled(Typography)({
+  fontWeight: "bold",
+  lineHeight: "1.2",
+  fontSize: "1.125rem",
+  color: "#616161",
+});
+
+export const ButtonSuscribe = styled(Button)<ButtonProps>(({ theme }) => ({
+  color: "white",
+  backgroundColor: "#ff5000",
+  "&:hover": {
+    backgroundColor: "#FF452B",
+  },
+  borderRadius: "36px",
+  fontFamily: "'Nunito', sans-serif",
+}));
+
+export const PaperHoum = styled(Paper)({
+  position: "absolute" as "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  bgcolor: "background.paper",
+  width: "calc(100% + 8px)",
+  boxShadow:
+    "0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12)",
+  maxWidth: "800px",
+  borderRadius: "16px",
+});
