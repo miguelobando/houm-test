@@ -15,11 +15,11 @@ Para modo producción
 **Decisiones técnicas**
 
 Se utilizó el stack: React, Material UI (debido a que es el utilizado dentro de Houm), Typescript, Jest y react-testing-library .\
-coomo API se utilizó la api de [spacex](https://docs.spacexdata.com/)
+como API se utilizó la api de [spacex](https://docs.spacexdata.com/)
 
-En un principio se creó la aplicación utilizando mediante créate-react-app con la plantilla de redux/toolkit y typescript, sin embargo se terminó descartando el uso de redux y utilizando un hook llamado &quot;useLaunches&quot; para pasar la información a través de los componentes debido a que existen sólo 2 vistas y en ningún momento se cae en el [Prop Drilling](https://kentcdodds.com/blog/prop-drilling) dada la baja complejidad de esta app, teniendo como ventaja que es más fácil de leer y requiere menos código. Los componentes están organizados en &quot;vistas&quot;, cada vista se encuentra dentro de la carpeta llamada &quot;View&quot; que a su vez contiene una sub-carpeta llamada &quot;parts&quot; que agrupa todas las partes de ella misma.
+En un principio se creó la aplicación utilizando mediante créate-react-app con la plantilla de redux/toolkit y typescript, sin embargo se terminó descartando el uso de redux y utilizando un hook llamado &quot;useLaunches&quot; para pasar la información a través de los componentes debido a que existen sólo 2 vistas y en ningún momento se cae en el [Prop Drilling](https://kentcdodds.com/blog/prop-drilling) dada la baja complejidad de esta app, teniendo como además ventaja que es más fácil de leer y requiere menos código. Los componentes están organizados en &quot;vistas&quot;, cada vista se encuentra dentro de la carpeta llamada &quot;View&quot; que a su vez contiene una sub-carpeta llamada &quot;parts&quot; que agrupa todas las partes de cada vista.
 
-Adicionalmente eixten las siguientes carpetas:
+Adicionalmente existen las siguientes carpetas:
 
 - Services: Donde se encuentran todas las funciones relacionadas al contacto con la API
 - Types: Donde se encuentran todos los tipados utilizados a lo largo de la aplicación, esto incluye los tipados de los objetos que retorna la API
