@@ -51,6 +51,7 @@ export const Filter = ({
               if (!selected) {
                 return <em>{"Todos"}</em>;
               }
+              // Esto puede ser mejorado, es problema de concepto de la api
               if (selected === "false") {
                 return "Fallido";
               }

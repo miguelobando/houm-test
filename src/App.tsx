@@ -11,10 +11,12 @@ function App() {
     <>
       {/* <Provider store={store}> */}
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/launch/:launchId" element={<LaunchDetails />} />
-      </Routes>
+      <div style={{ marginTop: "80px" }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/launch/:launchId" element={<LaunchDetails />} />
+        </Routes>
+      </div>
       {/* </Provider> */}
     </>
   );

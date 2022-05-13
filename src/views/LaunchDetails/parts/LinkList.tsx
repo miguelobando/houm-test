@@ -25,11 +25,13 @@ export const LinkList = ({ links }: { links: Links }) => {
       )}
 
       {links.reddit_launch && (
-        <Grid item sx={iconStyle}>
-          <RedditIcon
-            data-testid="redditIcon"
-            onClick={() => openLink(links.reddit_launch)}
-          />
+        <Grid item>
+          <SvgIcon sx={iconStyle}>
+            <RedditIcon
+              data-testid="redditIcon"
+              onClick={() => openLink(links.reddit_launch)}
+            />
+          </SvgIcon>
         </Grid>
       )}
 

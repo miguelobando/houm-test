@@ -4,7 +4,16 @@ import { AppBarHoum } from "../styles-css/components";
 export const Header = () => {
   return (
     <div>
-      <AppBarHoum position="sticky">
+      <AppBarHoum
+        sx={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          width: "100%",
+          marginBottom: "10px",
+        }}
+      >
         <Toolbar sx={{ backgroundColor: "white" }}>
           <Link to="/">
             <img

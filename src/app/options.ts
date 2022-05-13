@@ -13,4 +13,8 @@ export const orderParams: Options[] = [
     label: "Cohete",
     value: "rocket_name",
   },
+  {
+    label: "Lugar de lanzamiento",
+    value: "site_name",
+  },
 ];

@@ -3,6 +3,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  Divider,
   Grid,
   List,
   ListItem,
@@ -18,6 +19,7 @@ import {
 import { orderParams } from "../app/options";
 import { Filter } from "../components/Filter";
 import TuneRoundedIcon from "@mui/icons-material/TuneRounded";
+import CloseIcon from "@mui/icons-material/Close";
 export function FilterBar({
   setFilter,
 }: {
@@ -56,6 +58,10 @@ export function FilterBar({
       >
         <PaperHoum elevation={3}>
           <DialogTitle>
+            <CloseIcon
+              onClick={() => handleClose()}
+              sx={{ cursor: "pointer", color: "#ff5000" }}
+            />
             <TypographyFilter>
               {"Aplica filtros para encontrar el lanzamiento que buscas"}
             </TypographyFilter>
@@ -72,20 +78,29 @@ export function FilterBar({
                 maxWidth: "800px",
               }}
             >
-              {orderParams.map((e) => {
+              {orderParams.map((e, i) => {
                 return (
-                  <ListItem>
-                    <Grid container alignItems="center">
-                      <Grid item xs={12} sm={12} md={6}>
-                        <TypographyFilterOption>
-                          {e.label}
-                        </TypographyFilterOption>
+                  <>
+                    <ListItem>
+                      <Grid container alignItems="center">
+                        <Grid item xs={12} sm={12} md={6}>
+                          <TypographyFilterOption>
+                            {e.label}
+                          </TypographyFilterOption>
+                        </Grid>
+                        <Grid item xs={12} sm={12} md={6}>
+                          <Filter setStack={setStack} params={e} />
+                        </Grid>
                       </Grid>
-                      <Grid item xs={12} sm={12} md={6}>
-                        <Filter setStack={setStack} params={e} />
-                      </Grid>
-                    </Grid>
-                  </ListItem>
+                    </ListItem>
+                    {orderParams.length - 1 !== i && (
+                      <Divider
+                        sx={{
+                          marginBottom: "10px",
+                        }}
+                      />
+                    )}
+                  </>
                 );
               })}
             </List>

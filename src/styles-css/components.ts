@@ -45,8 +45,8 @@ export const CircularProgressHoum = styled(CircularProgress)({
 });
 
 export const AppBarHoum = styled(AppBar)({
-  marginBottom: "10px",
   color: "white",
+  marginBottom: "10px",
 });
 
 export const TypographyMission = styled(Typography)({

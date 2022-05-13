@@ -27,7 +27,7 @@ export const LaunchItem = ({ data }: { data: Launch[] }) => {
   return (
     <>
       {data.map((e, i) => (
-        <Grid item xs={8} md={4} lg={4}>
+        <Grid item xs={12} md={4} lg={4}>
           <CardHoum key={i}>
             <CardActionArea onClick={() => sendTo(e.flight_number)}>
               <CardMedia
@@ -39,7 +39,7 @@ export const LaunchItem = ({ data }: { data: Launch[] }) => {
                 }
               />
               <Grid container>
-                <Grid item xs={12} md={12} lg={8}>
+                <Grid item xs={8} md={8} lg={8}>
                   <CardHeader
                     avatar={<Avatar src={e.links.mission_patch_small} />}
                     title={e.mission_name}
@@ -50,8 +50,8 @@ export const LaunchItem = ({ data }: { data: Launch[] }) => {
                 </Grid>
                 <Grid
                   item
-                  xs={12}
-                  md={12}
+                  xs={4}
+                  md={4}
                   lg={4}
                   alignSelf="center"
                   justifySelf="center"

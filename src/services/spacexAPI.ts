@@ -58,7 +58,7 @@ export async function getOptions(key: string): Promise<Options[]> {
       const dataLocation: Options[] = resLocation.map((e) => {
         return {
           label: e.name,
-          value: e.site_id,
+          value: e.name,
         };
       });
       return dataLocation;
